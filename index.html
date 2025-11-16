@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stellar Tails Universe</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="assets/images/StellarTailsFavicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/images/StellarTailsLogo.png" alt="Stellar Tails" class="logo-img">
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#universe" class="nav-link">Universe</a></li>
+                <li><a href="#characters" class="nav-link">Characters</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Stellar Tails</h1>
+            <p class="hero-subtitle">A Furry-Themed Sci-Fi Universe</p>
+            <div class="hero-buttons">
+                <a href="#universe" class="btn btn-primary">Explore Universe</a>
+                <a href="#characters" class="btn btn-secondary">Meet Characters</a>
+            </div>
+        </div>
+        <div class="hero-bg">
+            <div class="stars"></div>
+            <div class="nebula"></div>
+        </div>
+    </section>
+
+    <section id="universe" class="universe">
+        <div class="container">
+            <h2 class="section-title">The Stellar Tails Universe</h2>
+            <div class="universe-content">
+                <div class="universe-text">
+                    <p>Welcome to the Stellar Tails universe, where four major powers vie for control of the galaxy's most valuable territories. Set in the year 2385, this universe follows the desperate struggles and shifting alliances between the Nexus Pact, Titan Concord, Draco Ascendancy, and mysterious alien factions.</p>
+                    <p>Travel between systems is accomplished through The Flux, a sub-dimensional layer where space is compressed and time flows erratically. Ships with Flux Coils punch through reality, "shimmering" across the sector while avoiding temporal distortions and Flux Storms that could tear them apart.</p>
+                    
+                    <h3 class="faction-title">Nexus Pact</h3>
+                    <p>A militarized democratic coalition dominated by digitigrade canids and felids. They value speed, adaptability, and pack cohesion, with sleek angular ships featuring advanced ECM and targeting systems. Their society blends corporate meritocracy with military service requirements.</p>
+                    
+                    <h3 class="faction-title">Titan Concord</h3>
+                    <p>A hierarchical union of ursine, equine, and bovine species operating under feudal corporate structure. They build flying fortresses prioritizing overwhelming firepower and near-impenetrable armor over speed. Their Great Houses control sectors, sworn to a Chairman.</p>
+                    
+                    <h3 class="faction-title">Draco Ascendancy</h3>
+                    <p>An ancient, insular caste-based society of draconic humanoids and kobold technicians. They claim to be the oldest starfaring civilization, with bio-crystalline hull plating and cloaking technology. Their organic-curved ships appear alive, with scale patterns and psychic capabilities.</p>
+                    
+                    <h3 class="faction-title">Mysterious Factions</h3>
+                    <p>The Synapse Collective are psychic insectoids with hive minds and living chitin ships. The Ouroboros Brood are zerg-like swarms with rapid adaptation and biological ships. The Lurkers of Erebus are tentacled deep-space horrors that phase in/out of reality, wielding psychic terror from their territory in the Erebus Rift.</p>
+                    
+                    <div class="universe-stats">
+                        <div class="stat">
+                            <span class="stat-number">2385</span>
+                            <span class="stat-label">Current Year</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">4</span>
+                            <span class="stat-label">Major Powers</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">12</span>
+                            <span class="stat-label">Border Systems</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="characters" class="characters">
+        <div class="container">
+            <h2 class="section-title">Meet the Characters</h2>
+            
+            <!-- NPS Characters -->
+            <h3 class="faction-title">Nexus Pact</h3>
+            
+            <div class="character-grid">
+                <div class="character-card">
+                    <div class="character-img-container">
+                        <img src="assets/images/characters/nps/Captain-Tiberius-Tibbs-Kane.png" alt="Captain Tiberius Tibbs Kane" class="character-img">
+                    </div>
+                    <div class="character-info">
+                        <h3>Captain Tiberius "Tibbs" Kane</h3>
+                        <p class="character-role">Captain - NPS Red Tail</p>
+                        <p class="character-desc collapsed" id="desc-tibbs">A scrappy, energetic male jackal who captains his vessel like a pirate ship, living for hit-and-run raids. He's loud, confident, and inspires his crew through bravado.</p>
+                        <button class="desc-toggle" onclick="toggleDescription('desc-tibbs')">Access Personnel File</button>
+                    </div>
+                </div>
+                
+                <div class="character-card">
+                    <div class="character-img-container">
+                        <img src="assets/images/characters/nps/Captain-Isabelle-Izzy-Corvo.png" alt="Captain Isabelle Izzy Corvo" class="character-img">
+                    </div>
+                    <div class="character-info">
+                        <h3>Captain Isabelle "Izzy" Corvo</h3>
+                        <p class="character-role">Captain - NPS Jackal's Gambit</p>
+                        <p class="character-desc collapsed" id="desc-izzy">A strikingly tall, slender non-binary Maned Wolf known for aggressive, audacious, and gambling personality. A charismatic leader who inspires fierce loyalty.</p>
+                        <button class="desc-toggle" onclick="toggleDescription('desc-izzy')">Access Personnel File</button>
+                    </div>
+                </div>
+                
+                <div class="character-card">
+                    <div class="character-img-container">
+                        <img src="assets/images/characters/nps/Captain-Eva-Rostova.png" alt="Captain Eva Rostova" class="character-img">
+                    </div>
+                    <div class="character-info">
+                        <h3>Captain Eva Rostova</h3>
+                        <p class="character-role">Captain - NPS Quickfoot</p>
+                        <p class="character-desc collapsed" id="desc-eva">A stunning Snow Leopard known for calm demeanor under pressure and sharp tactical mind. Runs her carrier like a pride, respected and slightly feared for unblinking scrutiny.</p>
+                        <button class="desc-toggle" onclick="toggleDescription('desc-eva')">Access Personnel File</button>
+                    </div>
+                </div>
+                
+                <div class="character-card">
+                    <div class="character-img-container">
+                        <img src="assets/images/characters/nps/First-Officer-Lyra.png" alt="First Officer Lyra" class="character-img">
+                    </div>
+                    <div class="character-info">
+                        <h3>First Officer Lyra</h3>
+                        <p class="character-role">First Officer - NPS Red Tail</p>
+                        <p class="character-desc collapsed" id="desc-lyra">The cool, collected vixen who serves as diplomat and tactician. A master of psychological warfare and manipulation with fiery adversarial relationship built on unspoken trust.</p>
+                        <button class="desc-toggle" onclick="toggleDescription('desc-lyra')">Access Personnel File</button>
+                    </div>
+                </div>
+                
+                <div class="character-card">
+                    <div class="character-img-container">
+                        <img src="assets/images/characters/nps/First-Officer-Marcus-Thorne.png" alt="First Officer Marcus Thorne" class="character-img">
+                    </div>
+                    <div class="character-info">
+                        <h3>First Officer Marcus Thorne</h3>
+                        <p class="character-role">First Officer - NPS Jackal's Gambit</p>
+                        <p class="character-desc collapsed" id="desc-marcus">The gruff, pragmatic First Officer. A burly, powerfully built grey wolf with scarred hide and perpetual scowl. Voice of reason that reins in Captain Corvo's wilder impulses.</p>
+                        <button class="desc-toggle" onclick="toggleDescription('desc-marcus')">Access Personnel File</button>
+                    </div>
+                </div>
+                
+                <div class="character-card">
+                    <div class="character-img-container">
+                        <img src="assets/images/characters/nps/First-Officer-Kaelen.png" alt="First Officer Kaelen" class="character-img">
+                    </div>
+                    <div class="character-info">
+                        <h3>First Officer Kaelen</h3>
+                        <p class="character-role">First Officer - NPS Quickfoot</p>
+                        <p class="character-desc collapsed" id="desc-kaelen">The by-the-book First Officer. A male red fox with meticulous and organized logistics expertise. Immaculate appearance and flawless efficiency, fiercely loyal to Captain Rostova.</p>
+                        <button class="desc-toggle" onclick="toggleDescription('desc-kaelen')">Access Personnel File</button>
+                    </div>
+                </div>
+                
+                <div class="character-card">
+                    <div class="character-img-container">
+                        <img src="assets/images/characters/nps/Chief-Engineer-Kaelen-Sparky-Jax.png" alt="Chief Engineer Kaelen Sparky Jax" class="character-img">
+                    </div>
+                    <div class="character-info">
+                        <h3>Chief Engineer Kaelen "Sparky" Jax</h3>
+                        <p class="character-role">Chief Engineer - Vulpine Star</p>
+                        <p class="character-desc collapsed" id="desc-sparky">The brilliant, socially awkward Chief Engineer. A non-binary ocelot genius with near-spiritual connection to their ship. Technically hermaphroditic with barbed feline anatomy.</p>
+                        <button class="desc-toggle" onclick="toggleDescription('desc-sparky')">Access Personnel File</button>
+                    </div>
+                </div>
+                
+                <div class="character-card">
+                    <div class="character-img-container">
+                        <img src="assets/images/characters/nps/Chief-Medical-Officer-Dr-Aris-Thorne.png" alt="Chief Medical Officer Dr. Aris Thorne" class="character-img">
+                    </div>
+                    <div class="character-info">
+                        <h3>Chief Medical Officer Dr. Aris Thorne</h3>
+                        <p class="character-role">Chief Medical Officer - Vulpine Star</p>
+                        <p class="character-desc collapsed" id="desc-aris">The brilliant but haunted CMO. A male arctic fox with cybernetic left arm and eye from past combat. Struggles with PTSD but maintains professional calm through medical practice.</p>
+                        <button class="desc-toggle" onclick="toggleDescription('desc-aris')">Access Personnel File</button>
+                    </div>
+                </div>
+                
+                <div class="character-card">
+                    <img src="assets/images/characters/nps/Chief-Medical-Officer-Dr-Aris-Thorne.png" alt="Chief Medical Officer Dr. Aris Thorne" class="character-img">
+                    <div class="character-info">
+                        <h3>Dr. Aris Thorne</h3>
+                        <p class="character-role">Chief Medical Officer - Vulpine Star</p>
+                        <p class="character-desc collapsed" id="desc-aris-thorne">The world-weary CMO. A brilliant arctic fox in his late 40s and distant cousin of Admiral. Cynical but deeply compassionate.</p>
+                        <button class="desc-toggle" onclick="toggleDescription('desc-aris-thorne')">Access Personnel File</button>
+                    </div>
+                </div>
+                
+                <div class="character-card">
+                    <div class="character-img-container">
+                        <img src="assets/images/characters/nps/Science-Officer-Dr-Kenji-Tanaka.png" alt="Science Officer Dr. Kenji Tanaka" class="character-img">
+                    </div>
+                    <div class="character-info">
+                        <h3>Science Officer Dr. Kenji Tanaka</h3>
+                        <p class="character-role">Science Officer - Vulpine Star</p>
+                        <p class="character-desc collapsed" id="desc-kenji">The brilliant but reckless red panda scientist. Pushes boundaries with dangerous experiments that could revolutionize space travel or destroy everyone. Obsessed with Flux Storms.</p>
+                        <button class="desc-toggle" onclick="toggleDescription('desc-kenji')">Access Personnel File</button>
+                    </div>
+                </div>
+                
+                <div class="character-card">
+                    <div class="character-img-container">
+                        <img src="assets/images/characters/nps/Communications-Officer-Zara.png" alt="Communications Officer Zara" class="character-img">
+                    </div>
+                    <div class="character-info">
+                        <h3>Communications Officer Zara</h3>
+                        <p class="character-role">Communications Officer - Vulpine Star</p>
+                        <p class="character-desc collapsed" id="desc-zara">The communications officer with empathic abilities. A female fennec fox who can sense emotions through communications systems. Struggles with constant emotional input from crew.</p>
+                        <button class="desc-toggle" onclick="toggleDescription('desc-zara')">Access Personnel File</button>
+                    </div>
+                </div> 
+                
+                <div class="character-card">
+                    <img src="assets/images/characters/nps/Squadron-Commander-Rex.png" alt="Squadron Commander Rex" class="character-img">
+                    <div class="character-info">
+                        <h3>Squadron Commander Rex</h3>
+                        <p class="character-role">Commander - Razors Marine Squadron</p>
+                        <p class="character-desc collapsed" id="desc-rex">A commander in marine drop squadron. A gruff, powerfully built male wolf in his early 40s, veteran of brutal campaigns like Red Corridor.</p>
+                        <button class="desc-toggle" onclick="toggleDescription('desc-rex')">Access Personnel File</button>
+                    </div>
+                </div>
+                
+                <div class="character-card">
+                    <div class="character-img-container">
+                        <img src="assets/images/characters/nps/Flight-Commander-Maverick.png" alt="Flight Commander Maverick" class="character-img">
+                    </div>
+                    <div class="character-info">
+                        <h3>Flight Commander "Maverick"</h3>
+                        <p class="character-role">Flight Commander - Viper Squadron</p>
+                        <p class="character-desc collapsed" id="desc-maverick">The reckless, rule-breaking ace pilot. A male coyote with insufferable ego but unmatched skills in dogfighting. Lives for the thrill and glory of combat.</p>
+                        <button class="desc-toggle" onclick="toggleDescription('desc-maverick')">Access Personnel File</button>
+                    </div>
+                </div>
+                
+                <div class="character-card">
+                    <div class="character-img-container">
+                        <img src="assets/images/characters/nps/Flight-Commander-Stiletto.png" alt="Flight Commander Stiletto" class="character-img">
+                    </div>
+                    <div class="character-info">
+                        <h3>Flight Commander "Stiletto"</h3>
+                        <p class="character-role">Flight Commander - Digger Squadron</p>
+                        <p class="character-desc collapsed" id="desc-stiletto">The cold, focused commander of "Diggers" bomber squadron. A female lynx who is a professional demanding perfection from herself and her pilots.</p>
+                        <button class="desc-toggle" onclick="toggleDescription('desc-stiletto')">Access Personnel File</button>
+                    </div>
+                </div>
+            </div>
+            <!-- TCS Characters -->
+            <h3 class="faction-title">Titan Concord</h3>
+            <div class="character-grid">               
+                <div class="character-card">
+                    <div class="character-img-container">
+                        <img src="assets/images/characters/tcs/High-Lord-Admiral-Borin-Stonehoof.png" alt="High Lord Admiral Borin Stonehoof" class="character-img">
+                    </div>
+                    <div class="character-info">
+                        <h3>High Lord Admiral Borin Stonehoof</h3>
+                        <p class="character-role">Commander - Titan Concord 3rd Fleet</p>
+                        <p class="character-desc collapsed" id="desc-borin">A colossal European Bison in his late 60s, Lord Stonehoof is a mountain of muscle and authority, his massive scarred horns and perpetual scowl a testament to his status. He is stubborn, tradition-bound, and views Nexus Pact's adaptability as dishonorable weakness.</p>
+                        <button class="desc-toggle" onclick="toggleDescription('desc-borin')">Access Personnel File</button>
+                    </div>
+                </div>
+                
+                <div class="character-card">
+                    <div class="character-img-container">
+                        <img src="assets/images/characters/tcs/Captain-Valeria-Mane-Gold.png" alt="Captain Valeria Mane Gold" class="character-img">
+                    </div>
+                    <div class="character-info">
+                        <h3>Captain Valeria Mane-Gold</h3>
+                        <p class="character-role">Captain - TCS Aurochs's Fury</p>
+                        <p class="character-desc collapsed" id="desc-valeria">A tall, powerfully built Shire mare, she is embodiment of a noble warrior. Her personality is disciplined and honorable, though she possesses a deep well of compassion for her crew. She sees using a strapon on a partner as a "gift of her strength."</p>
+                        <button class="desc-toggle" onclick="toggleDescription('desc-valeria')">Access Personnel File</button>
+                    </div>
+                </div>
+                
+                <div class="character-card">
+                    <div class="character-img-container">
+                        <img src="assets/images/characters/tcs/Chief-Engineer-Grum-Boulder-Hand.png" alt="Chief Engineer Grum Boulder Hand" class="character-img">
+                    </div>
+                    <div class="character-info">
+                        <h3>Chief Engineer Grum Boulder-Hand</h3>
+                        <p class="character-role">Chief Engineer - TCS Iron Hoof</p>
+                        <p class="character-desc collapsed" id="desc-grum">A broad, surly Cape Buffalo, a genius with heavy machinery who speaks in grunts and has a spiritual connection to ship's reactor. He has no patience for anything but raw functionality, extending to his personal life which is as primal and gritty as his engine room.</p>
+                        <button class="desc-toggle" onclick="toggleDescription('desc-grum')">Access Personnel File</button>
+                    </div>
+                </div>
+                
+                <div class="character-card">
+                    <div class="character-img-container">
+                        <img src="assets/images/characters/tcs/Flight-Sergeant-Rook-Ursa.png" alt="Flight Sergeant Rook Ursa" class="character-img">
+                    </div>
+                    <div class="character-info">
+                        <h3>Flight Sergeant "Rook" Ursa</h3>
+                        <p class="character-role">Flight Sergeant - Torpedo Bomber Pilot</p>
+                        <p class="character-desc collapsed" id="desc-rook">A calm, professional torpedo bomber pilot. Rook is a stocky, powerful American Black Bear with a fatalistic outlook born from seeing too many friends lost in combat. This makes him crave intimacy and gentleness in his personal life.</p>
+                        <button class="desc-toggle" onclick="toggleDescription('desc-rook')">Access Personnel File</button>
+                    </div>
+                </div>
+                
+                <div class="character-card">
+                    <div class="character-img-container">
+                        <img src="assets/images/characters/tcs/Logistics-Officer-Elara-Meadow-Light.png" alt="Logistics Officer Elara Meadow Light" class="character-img">
+                    </div>
+                    <div class="character-info">
+                        <h3>Logistics Officer Elara Meadow-Light</h3>
+                        <p class="character-role">Logistics Officer - Quartermaster</p>
+                        <p class="character-desc collapsed" id="desc-elara">The quartermaster who holds a carrier battle group together. Elara is a stout, motherly Highland Cow, fiercely protective of "her" supplies and "her" crews. Her dominance is nurturing but absolute.</p>
+                        <button class="desc-toggle" onclick="toggleDescription('desc-elara')">Access Personnel File</button>
+                    </div>
+                </div>
+                
+                <div class="character-card">
+                    <div class="character-img-container">
+                        <img src="assets/images/characters/tcs/Corporal-Tusk-Grizzlejaw.png" alt="Corporal Tusk Grizzlejaw" class="character-img">
+                    </div>
+                    <div class="character-info">
+                        <h3>Corporal Tusk Grizzlejaw</h3>
+                        <p class="character-role">Corporal - Marine NCO</p>
+                        <p class="character-desc collapsed" id="desc-tusk">A brutal Marine NCO. Tusk is a mean-looking boar who lives for thrill of close-quarters combat. He sees all forms of physical confrontation as a way to establish dominance, including sex.</p>
+                        <button class="desc-toggle" onclick="toggleDescription('desc-tusk')">Access Personnel File</button>
+                    </div>
+                </div>
+                
+                <div class="character-card">
+                    <div class="character-img-container">
+                        <img src="assets/images/characters/tcs/Comm-Specialist-Braydon.png" alt="Comm Specialist Braydon" class="character-img">
+                    </div>
+                    <div class="character-info">
+                        <h3>Comms Specialist "Bray" Long-Ears</h3>
+                        <p class="character-role">Communications Specialist</p>
+                        <p class="character-desc collapsed" id="desc-bray">A lanky, stubborn, and endlessly reliable Comms Specialist. Bray's job requires immense patience and concentration, which contrasts with his sarcastic wit. His most prominent physical attribute is his very large, well-proportioned donkey cock.</p>
+                        <button class="desc-toggle" onclick="toggleDescription('desc-bray')">Access Personnel File</button>
+                    </div>
+                </div>
+            </div>
+            <!-- DAS Characters -->
+            <h3 class="faction-title">Draco Ascendancy</h3>
+            <div class="character-grid">             
+                <div class="character-card">
+                    <div class="character-img-container">
+                        <img src="assets/images/characters/das/Fleet-Lord-Xylos.png" alt="Fleet Lord Xylos" class="character-img">
+                    </div>
+                    <div class="character-info">
+                        <h3>Fleet Lord Xylos Star-Scaled</h3>
+                        <p class="character-role">Supreme Commander - Ascendancy's Home Fleet</p>
+                        <p class="character-desc collapsed" id="desc-xylos">An ancient Wyrm over 300 years old, Xylos is a being of immense power and cosmic patience. He views short-lived mammals as fleeting annoyances. He communicates telepathically and is driven by a prophetic vision of draconic supremacy.</p>
+                        <button class="desc-toggle" onclick="toggleDescription('desc-xylos')">Access Personnel File</button>
+                    </div>
+                </div>
+                
+                <div class="character-card">
+                    <div class="character-img-container">
+                        <img src="assets/images/characters/das/Seer-Mistress-Vexia.png" alt="Seer Mistress Vexia" class="character-img">
+                    </div>
+                    <div class="character-info">
+                        <h3>Seer-Mistress Vexia</h3>
+                        <p class="character-role">Psi-Commander - Caste Lord</p>
+                        <p class="character-desc collapsed" id="desc-vexia">The ship's Psi-Commander and Caste Lord. A beautiful, terrifying Naga, Vexia has a serpentine lower body and a torso of silver scales. Her eyes are completely white, and she communicates with a hypnotic whisper.</p>
+                        <button class="desc-toggle" onclick="toggleDescription('desc-vexia')">Access Personnel File</button>
+                    </div>
+                </div>
+                
+                <div class="character-card">
+                    <div class="character-img-container">
+                        <img src="assets/images/characters/das/Chief-Technician-Kip.png" alt="Chief Technician Kip" class="character-img">
+                    </div>
+                    <div class="character-info">
+                        <h3>Chief Technician Kip</h3>
+                        <p class="character-role">Chief Engineer's Assistant</p>
+                        <p class="character-desc collapsed" id="desc-kip">A Chief Engineer's Assistant. Kip is a small, wiry Kobold, a brilliant but nervous technician who understands the Ascendancy's living ships better than anyone. His personality is defined by his low social standing and his desperate desire to please higher-caste dragons.</p>
+                        <button class="desc-toggle" onclick="toggleDescription('desc-kip')">Access Personnel File</button>
+                    </div>
+                </div>
+                
+                <div class="character-card">
+                    <div class="character-img-container">
+                        <img src="assets/images/characters/das/Captain-Ssarth.png" alt="Captain Ssarth" class="character-img">
+                    </div>
+                    <div class="character-info">
+                        <h3>Captain Ssarth Sun-Touched</h3>
+                        <p class="character-role">Captain - Wyrm's Tooth Battlecruiser</p>
+                        <p class="character-desc collapsed" id="desc-ssarth">Captain of battlecruiser "Wyrm's Tooth." A powerfully built Dragonkin with rare, brilliant gold scales, marking him as a minor noble. He is ambitious and proud, chafing under the command of traditionalists.</p>
+                        <button class="desc-toggle" onclick="toggleDescription('desc-ssarth')">Access Personnel File</button>
+                    </div>
+                </div>
+                
+                <div class="character-card">
+                    <div class="character-img-container">
+                        <img src="assets/images/characters/das/Wing-Leader-Zizz.png" alt="Wing Leader Zizz" class="character-img">
+                    </div>
+                    <div class="character-info">
+                        <h3>Wing Leader Zizz</h3>
+                        <p class="character-role">Wing Leader - Shard Interceptor Pilot</p>
+                        <p class="character-desc collapsed" id="desc-zizz">A fanatical "Shard" Interceptor pilot. Zizz is a female kobold who is neurally linked to her fighter, a process that has made her fearless and erratic. She sees herself as a divine instrument of destruction.</p>
+                        <button class="desc-toggle" onclick="toggleDescription('desc-zizz')">Access Personnel File</button>
+                    </div>
+                </div>
+                
+                <div class="character-card">
+                    <div class="character-img-container">
+                        <img src="assets/images/characters/das/Temple-Guard-Grak.png" alt="Temple Guard Grak" class="character-img">
+                    </div>
+                    <div class="character-info">
+                        <h3>Temple Guard Grak</h3>
+                        <p class="character-role">Temple Guard - Ship Security</p>
+                        <p class="character-desc collapsed" id="desc-grak">A hulking, silent Komodo Dragon who serves as the ship's internal security. Grak is a living weapon with no personality beyond his duty. His kinks are purely predatory and stem from instinct.</p>
+                        <button class="desc-toggle" onclick="toggleDescription('desc-grak')">Access Personnel File</button>
+                    </div>
+                </div>
+                
+                <div class="character-card">
+                    <div class="character-img-container">
+                        <img src="assets/images/characters/das/Bio-Acolyte-Lyss.png" alt="Bio Acolyte Lyss" class="character-img">
+                    </div>
+                    <div class="character-info">
+                        <h3>Bio-Acolyte Lyss</h3>
+                        <p class="character-role">Ship Tender - Living Components Health</p>
+                        <p class="character-desc collapsed" id="desc-lyss">A "ship tender" responsible for the health of the vessel's living components. Lyss is a slender, androgynous, and empathic salamander-like being who feels the ship's pain and pleasure.</p>
+                        <button class="desc-toggle" onclick="toggleDescription('desc-lyss')">Access Personnel File</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2385 Stellar Tails Universe. All rights reserved.</p>
+            <p>Built with HTML, CSS, and JavaScript</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

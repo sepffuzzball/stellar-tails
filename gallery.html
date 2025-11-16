@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery - Stellar Tails Universe</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="assets/images/StellarTailsFavicon.png">
+    <style>
+        .gallery {
+            padding: 100px 0 50px;
+            min-height: 100vh;
+            background: var(--bg-dark);
+        }
+        
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .gallery-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+        
+        .gallery-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .gallery-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-group {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .filter-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-right: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .view-toggle, .filter-toggle {
+            padding: 8px 16px;
+            background: var(--bg-medium);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .view-toggle.active, .filter-toggle.active {
+            background: var(--primary-color);
+            color: var(--bg-dark);
+            border-color: var(--primary-color);
+        }
+        
+        .filter-toggle:hover {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 10px rgba(255, 0, 255, 0.3);
+        }
+        
+        .search-box {
+            padding: 10px 20px;
+            background: var(--bg-medium);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            border-radius: 25px;
+            width: 300px;
+            max-width: 100%;
+            font-size: 0.9rem;
+        }
+        
+        .search-box:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+        
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .image-grid.list-view {
+            grid-template-columns: 1fr;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+        
+        .image-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .image-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 255, 255, 0.2);
+            border-color: var(--primary-color);
+        }
+        
+        .image-grid.list-view .image-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+        }
+        
+        .image-grid.list-view .image-item:hover {
+            transform: translateX(5px);
+        }
+        
+        .image-container {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .image-grid.list-view .image-container {
+            width: 100px;
+            height: 100px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+        }
+        
+        .gallery-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .image-grid.list-view .gallery-image {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .image-item:hover .gallery-image {
+            transform: scale(1.05);
+        }
+        
+        .image-info {
+            padding: 1rem;
+        }
+        
+        .image-grid.list-view .image-info {
+            padding: 0;
+            flex: 1;
+        }
+        
+        .image-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            word-break: break-word;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+        
+        .ship-role {
+            font-size: 0.7rem;
+            color: var(--secondary-color);
+            font-family: 'Space Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+        }
+        
+        .image-path {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            font-family: 'Space Mono', monospace;
+            word-break: break-all;
+        }
+        
+        .copy-btn {
+            margin-top: 0.5rem;
+            padding: 4px 12px;
+            background: var(--bg-light);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            transition: all 0.3s ease;
+        }
+        
+        .copy-btn:hover {
+            background: var(--primary-color);
+            color: var(--bg-dark);
+            border-color: var(--primary-color);
+        }
+        
+        .copy-btn.copied {
+            background: var(--accent-color);
+            color: var(--bg-dark);
+            border-color: var(--accent-color);
+        }
+        
+        .image-meta {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .image-type, .image-faction {
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .image-type {
+            background: rgba(0, 255, 255, 0.2);
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+        }
+        
+        .image-faction {
+            background: rgba(255, 0, 255, 0.2);
+            color: var(--secondary-color);
+            border: 1px solid var(--secondary-color);
+        }
+        
+        /* Modal for image preview */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            margin-top: 5vh;
+            border-radius: 10px;
+        }
+        
+        .modal-caption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            color: var(--text-primary);
+            padding: 20px 0;
+            font-family: 'Space Mono', monospace;
+        }
+        
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: var(--text-primary);
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            color: var(--primary-color);
+        }
+        
+        .no-results {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin: 3rem 0;
+        }
+        
+        /* Ship Statistics Styles */
+        .ship-stats {
+            margin-top: 0.75rem;
+            padding: 0.5rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 6px;
+            border: 1px solid rgba(0, 255, 255, 0.1);
+        }
+        
+        .stat-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.25rem;
+            font-size: 0.7rem;
+        }
+        
+        .stat-row:last-child {
+            margin-bottom: 0;
+        }
+        
+        .stat-label {
+            width: 100px;
+            color: var(--text-secondary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .stat-stars {
+            display: flex;
+            align-items: center;
+            gap: 1px;
+        }
+        
+        .star {
+            width: 8px;
+            height: 8px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .star::before {
+            content: '★';
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: 8px;
+            color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .star.filled::before {
+            color: var(--primary-color);
+            text-shadow: 0 0 3px rgba(0, 255, 255, 0.5);
+        }
+        
+        .star.half::before {
+            color: var(--secondary-color);
+            text-shadow: 0 0 3px rgba(255, 0, 255, 0.5);
+        }
+        
+        .stat-value {
+            margin-left: 0.5rem;
+            color: var(--text-dim);
+            font-size: 0.6rem;
+            font-family: 'Space Mono', monospace;
+        }
+        
+        @media (max-width: 768px) {
+            .gallery-title {
+                font-size: 2rem;
+            }
+            
+            .image-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 1rem;
+            }
+            
+            .search-box {
+                width: 100%;
+            }
+            
+            .gallery-controls {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/images/StellarTailsLogo.png" alt="Stellar Tails" class="logo-img">
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html#home" class="nav-link">Home</a></li>
+                <li><a href="index.html#universe" class="nav-link">Universe</a></li>
+                <li><a href="index.html#characters" class="nav-link">Characters</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="gallery">
+        <div class="container">
+            <div class="gallery-header">
+                <h1 class="gallery-title">Image Gallery</h1>
+                <p class="gallery-subtitle">Browse and embed Stellar Tails characters and ships</p>
+            </div>
+            
+            <div class="gallery-controls">
+                <div class="filter-group">
+                    <span class="filter-label">Type:</span>
+                    <button class="filter-toggle active" data-type="all" data-filter="type">All</button>
+                    <button class="filter-toggle" data-type="characters" data-filter="type">Characters</button>
+                    <button class="filter-toggle" data-type="ships" data-filter="type">Ships</button>
+                </div>
+                
+                <div class="filter-group">
+                    <span class="filter-label">Faction:</span>
+                    <button class="filter-toggle active" data-faction="all" data-filter="faction">All</button>
+                    <button class="filter-toggle" data-faction="nps" data-filter="faction">NPS</button>
+                    <button class="filter-toggle" data-faction="tcs" data-filter="faction">TCS</button>
+                    <button class="filter-toggle" data-faction="das" data-filter="faction">DAS</button>
+                    <button class="filter-toggle" data-faction="lurkers" data-filter="faction">Lurkers</button>
+                    <button class="filter-toggle" data-faction="ouroborus" data-filter="faction">Ouroborus</button>
+                    <button class="filter-toggle" data-faction="synapse" data-filter="faction">Synapse</button>
+                </div>
+                
+                <div class="filter-group">
+                    <span class="filter-label">View:</span>
+                    <button class="view-toggle active" data-view="grid">Grid</button>
+                    <button class="view-toggle" data-view="list">List</button>
+                </div>
+                
+                <input type="text" class="search-box" placeholder="Search images..." id="searchBox">
+            </div>
+            
+            <div class="image-grid" id="imageGrid">
+                <!-- Images will be dynamically loaded here -->
+            </div>
+            
+            <div class="no-results" id="noResults" style="display: none;">
+                No images found matching your search.
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for image preview -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div class="modal-caption" id="modalCaption"></div>
+    </div>
+
+    <script>
+        // Ship statistics data (1-10 scale)
+        const shipStats = {
+            // NPS Ships - Fast and accurate, moderate firepower
+            'XF-9 "Claw"': { firepower: 6, accuracy: 9, maneuverability: 10, speed: 9, shields: 5, hull: 4 },
+            'XF-7 "Viper"': { firepower: 5, accuracy: 10, maneuverability: 10, speed: 10, shields: 4, hull: 3 },
+            'CV-7 "Quickfoot"': { firepower: 2, accuracy: 4, maneuverability: 2, speed: 3, shields: 8, hull: 9 },
+            'BC-3 "Night Stalker"': { firepower: 9, accuracy: 7, maneuverability: 3, speed: 2, shields: 8, hull: 10 },
+            'DR-1 "Vulpine Star"': { firepower: 10, accuracy: 8, maneuverability: 2, speed: 2, shields: 9, hull: 10 },
+            'Squadron Display': { firepower: 1, accuracy: 5, maneuverability: 1, speed: 1, shields: 5, hull: 5 },
+            
+            // TCS Ships - Heavy armor and firepower, slow
+            'TI-8 "Hornet"': { firepower: 7, accuracy: 6, maneuverability: 4, speed: 5, shields: 7, hull: 8 },
+            'TI-11 "Bulwark"': { firepower: 9, accuracy: 6, maneuverability: 2, speed: 3, shields: 8, hull: 10 },
+            'TB-9 "Battering Ram"': { firepower: 10, accuracy: 7, maneuverability: 2, speed: 3, shields: 7, hull: 9 },
+            'SB-5 "Earthshaker"': { firepower: 8, accuracy: 5, maneuverability: 1, speed: 2, shields: 9, hull: 10 },
+            'BC-1 "Aurochs\'s Fury"': { firepower: 9, accuracy: 6, maneuverability: 2, speed: 4, shields: 8, hull: 9 },
+            'CV-1 "The Grazelands"': { firepower: 3, accuracy: 4, maneuverability: 1, speed: 2, shields: 9, hull: 10 },
+            'BS-1 "Iron Hoof"': { firepower: 10, accuracy: 6, maneuverability: 1, speed: 1, shields: 10, hull: 10 },
+            
+            // DAS Ships - Balanced with stealth capabilities
+            'DF-5 "Cobra"': { firepower: 6, accuracy: 8, maneuverability: 8, speed: 7, shields: 6, hull: 5 },
+            'DF-3 "Shard"': { firepower: 5, accuracy: 9, maneuverability: 9, speed: 8, shields: 5, hull: 4 },
+            'DF-7 "Basilisk"': { firepower: 8, accuracy: 7, maneuverability: 5, speed: 4, shields: 7, hull: 7 },
+            'DB-2 "Spitter"': { firepower: 9, accuracy: 8, maneuverability: 6, speed: 5, shields: 6, hull: 6 },
+            'DB-4 "Nebula Wyrm"': { firepower: 7, accuracy: 7, maneuverability: 3, speed: 3, shields: 8, hull: 8 },
+            'BC-1 "Wyrm\'s Tooth"': { firepower: 8, accuracy: 8, maneuverability: 4, speed: 5, shields: 7, hull: 8 },
+            'CV-1 "Star-Eater\'s Maw"': { firepower: 2, accuracy: 5, maneuverability: 3, speed: 4, shields: 8, hull: 8 },
+            'LV-1 "Void-Singer"': { firepower: 9, accuracy: 8, maneuverability: 3, speed: 3, shields: 9, hull: 9 },
+            
+            // Lurkers Ships - Stealth focused
+            'Lurkers Fighter': { firepower: 5, accuracy: 7, maneuverability: 9, speed: 8, shields: 4, hull: 4 },
+            'Lurkers Capital': { firepower: 7, accuracy: 6, maneuverability: 5, speed: 6, shields: 7, hull: 8 },
+            
+            // Ouroborus Ships - Regenerative
+            'Ouroborus Fighter': { firepower: 6, accuracy: 6, maneuverability: 7, speed: 6, shields: 8, hull: 7 },
+            'Ouroborus Capital': { firepower: 8, accuracy: 7, maneuverability: 4, speed: 4, shields: 9, hull: 9 },
+            
+            // Synapse Ships - AI controlled
+            'Synapse Fighter': { firepower: 7, accuracy: 10, maneuverability: 8, speed: 7, shields: 5, hull: 5 },
+            'Synapse Capital': { firepower: 9, accuracy: 9, maneuverability: 3, speed: 4, shields: 8, hull: 8 }
+        };
+
+        // Generate star rating HTML
+        function generateStars(rating) {
+            const fullStars = Math.floor(rating);
+            const hasHalfStar = rating % 1 >= 0.5;
+            let starsHTML = '';
+            
+            for (let i = 0; i < 10; i++) {
+                if (i < fullStars) {
+                    starsHTML += '<span class="star filled"></span>';
+                } else if (i === fullStars && hasHalfStar) {
+                    starsHTML += '<span class="star half"></span>';
+                } else {
+                    starsHTML += '<span class="star"></span>';
+                }
+            }
+            
+            return starsHTML;
+        }
+
+        // Generate ship statistics HTML
+        function generateShipStats(shipName) {
+            const stats = shipStats[shipName];
+            if (!stats) return '';
+            
+            return `
+                <div class="ship-stats">
+                    <div class="stat-row">
+                        <span class="stat-label">Firepower</span>
+                        <div class="stat-stars">${generateStars(stats.firepower)}</div>
+                        <span class="stat-value">${stats.firepower}/10</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Accuracy</span>
+                        <div class="stat-stars">${generateStars(stats.accuracy)}</div>
+                        <span class="stat-value">${stats.accuracy}/10</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Maneuver</span>
+                        <div class="stat-stars">${generateStars(stats.maneuverability)}</div>
+                        <span class="stat-value">${stats.maneuverability}/10</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Speed</span>
+                        <div class="stat-stars">${generateStars(stats.speed)}</div>
+                        <span class="stat-value">${stats.speed}/10</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Shields</span>
+                        <div class="stat-stars">${generateStars(stats.shields)}</div>
+                        <span class="stat-value">${stats.shields}/10</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Hull</span>
+                        <div class="stat-stars">${generateStars(stats.hull)}</div>
+                        <span class="stat-value">${stats.hull}/10</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        // List of all images with metadata
+        const images = [
+            // Logo
+            { path: 'StellarTails.png', type: 'logo', faction: 'none', name: 'Stellar Tails Logo' },
+            
+            // NPS Characters
+            { path: 'characters/nps/Specialist-Jynx.png', type: 'character', faction: 'nps', name: 'Specialist Jynx' },
+            { path: 'characters/nps/Communications-Officer-Zara.png', type: 'character', faction: 'nps', name: 'Communications Officer Zara' },
+            { path: 'characters/nps/Science-Officer-Dr-Kenji-Tanaka.png', type: 'character', faction: 'nps', name: 'Science Officer Dr. Kenji Tanaka' },
+            { path: 'characters/nps/Chief-Engineer-Kaelen-Sparky-Jax.png', type: 'character', faction: 'nps', name: 'Chief Engineer Kaelen Sparky Jax' },
+            { path: 'characters/nps/Chief-Medical-Officer-Dr-Aris-Thorne.png', type: 'character', faction: 'nps', name: 'Chief Medical Officer Dr. Aris Thorne' },
+            { path: 'characters/nps/Squadron-Commander-Rex.png', type: 'character', faction: 'nps', name: 'Squadron Commander Rex' },
+            { path: 'characters/nps/Flight-Commander-Stiletto.png', type: 'character', faction: 'nps', name: 'Flight Commander Stiletto' },
+            { path: 'characters/nps/Flight-Commander-Maverick.png', type: 'character', faction: 'nps', name: 'Flight Commander Maverick' },
+            { path: 'characters/nps/First-Officer-Lyra.png', type: 'character', faction: 'nps', name: 'First Officer Lyra' },
+            { path: 'characters/nps/Captain-Tiberius-Tibbs-Kane.png', type: 'character', faction: 'nps', name: 'Captain Tiberius Tibbs Kane' },
+            { path: 'characters/nps/First-Officer-Marcus-Thorne.png', type: 'character', faction: 'nps', name: 'First Officer Marcus Thorne' },
+            { path: 'characters/nps/Captain-Isabelle-Izzy-Corvo.png', type: 'character', faction: 'nps', name: 'Captain Isabelle Izzy Corvo' },
+            { path: 'characters/nps/First-Officer-Kaelen.png', type: 'character', faction: 'nps', name: 'First Officer Kaelen' },
+            { path: 'characters/nps/Warrant-Officer-Joric-Thorne.png', type: 'character', faction: 'nps', name: 'Warrant Officer Joric Thorne' },
+            { path: 'characters/nps/Fleet-Admiral-Valerius-Thorn.png', type: 'character', faction: 'nps', name: 'Fleet Admiral Valerius Thorn' },
+            { path: 'characters/nps/Captain-Eva-Rostova.png', type: 'character', faction: 'nps', name: 'Captain Eva Rostova' },
+            
+            // TCS Characters
+            { path: 'characters/tcs/Captain-Valeria-Mane-Gold.png', type: 'character', faction: 'tcs', name: 'Captain Valeria Mane Gold' },
+            { path: 'characters/tcs/Chief-Engineer-Grum-Boulder-Hand.png', type: 'character', faction: 'tcs', name: 'Chief Engineer Grum Boulder Hand' },
+            { path: 'characters/tcs/Comm-Specialist-Braydon.png', type: 'character', faction: 'tcs', name: 'Comm Specialist Braydon' },
+            { path: 'characters/tcs/Corporal-Tusk-Grizzlejaw.png', type: 'character', faction: 'tcs', name: 'Corporal Tusk Grizzlejaw' },
+            { path: 'characters/tcs/Flight-Sergeant-Rook-Ursa.png', type: 'character', faction: 'tcs', name: 'Flight Sergeant Rook Ursa' },
+            { path: 'characters/tcs/High-Lord-Admiral-Borin-Stonehoof.png', type: 'character', faction: 'tcs', name: 'High Lord Admiral Borin Stonehoof' },
+            { path: 'characters/tcs/Logistics-Officer-Elara-Meadow-Light.png', type: 'character', faction: 'tcs', name: 'Logistics Officer Elara Meadow Light' },
+            
+            // DAS Characters  
+            { path: 'characters/das/Bio-Acolyte-Lyss.png', type: 'character', faction: 'das', name: 'Bio-Acolyte Lyss' },
+            { path: 'characters/das/Captain-Ssarth.png', type: 'character', faction: 'das', name: 'Captain Ssarth' },
+            { path: 'characters/das/Chief-Technician-Kip.png', type: 'character', faction: 'das', name: 'Chief Technician Kip' },
+            { path: 'characters/das/Fleet-Lord-Xylos.png', type: 'character', faction: 'das', name: 'Fleet Lord Admiral Xylos' },
+            { path: 'characters/das/Seer-Mistress-Vexia.png', type: 'character', faction: 'das', name: 'Seer-Mistress-Vexia' },
+            { path: 'characters/das/Temple-Guard-Grak.png', type: 'character', faction: 'das', name: 'Temple-Guard Grak' },
+            { path: 'characters/das/Wing-Leader-Zizz.png', type: 'character', faction: 'das', name: 'Wing-Leader-Zizz' },
+            
+            // Lurkers Characters
+            { path: 'characters/lurkers/LurkersOfErebus.png', type: 'character', faction: 'lurkers', name: '<Unknown>' },
+            
+            // Ouroborus Characters
+            { path: 'characters/ouroborus/OuroborusBrood.png', type: 'character', faction: 'ouroborus', name: '<Unknown>' },
+            
+            // Synapse Characters
+            { path: 'characters/synapse/SynapseCollective.png', type: 'character', faction: 'synapse', name: '<Unknown>' },
+            
+            // NPS Ships
+            { path: 'ships/nps/NPSFighter.png', type: 'ship', faction: 'nps', name: 'XF-9 "Claw"', role: 'Multi-role Fighter' },
+            { path: 'ships/nps/NPSInterceptor.png', type: 'ship', faction: 'nps', name: 'XF-7 "Viper"', role: 'Interceptor' },
+            { path: 'ships/nps/NPSCarrier.png', type: 'ship', faction: 'nps', name: 'CV-7 "Quickfoot"', role: 'Carrier' },
+            { path: 'ships/nps/NPSBattleship.png', type: 'ship', faction: 'nps', name: 'BC-3 "Night Stalker"', role: 'Battlecruiser' },
+            { path: 'ships/nps/NPSDreadnought.png', type: 'ship', faction: 'nps', name: 'DR-1 "Vulpine Star"', role: 'Dreadnought' },
+            { path: 'ships/nps/NPSSquadron.png', type: 'ship', faction: 'nps', name: 'Squadron Display', role: 'Command & Control' },
+            
+            // TCS Ships
+            { path: 'ships/tcs/TCSStrategic.png', type: 'ship', faction: 'tcs', name: 'SB-5 "Earthshaker"', role: 'Strategic Bomber' },
+            { path: 'ships/tcs/TCSTorpedo.png', type: 'ship', faction: 'tcs', name: 'TB-9 "Battering Ram"', role: 'Torpedo Bomber' },
+            { path: 'ships/tcs/TCSHeavy.png', type: 'ship', faction: 'tcs', name: 'TI-11 "Bulwark"', role: 'Heavy Fighter' },
+            { path: 'ships/tcs/TCSFighter.png', type: 'ship', faction: 'tcs', name: 'TI-8 "Hornet"', role: 'Multi-role Fighter' },
+            { path: 'ships/tcs/TCSInterceptor.png', type: 'ship', faction: 'tcs', name: 'TI-8 "Hornet"', role: 'High-Speed Interceptor' },
+            { path: 'ships/tcs/TCSBattlecruiser.png', type: 'ship', faction: 'tcs', name: 'BC-1 "Aurochs\'s Fury"', role: 'Battlecruiser' },
+            { path: 'ships/tcs/TCSCarrier.png', type: 'ship', faction: 'tcs', name: 'CV-1 "The Grazelands"', role: 'Carrier' },
+            { path: 'ships/tcs/TCSDreadnought.png', type: 'ship', faction: 'tcs', name: 'BS-1 "Iron Hoof"', role: 'Dreadnought' },
+            
+            // DAS Ships
+            { path: 'ships/das/DASStrategic.png', type: 'ship', faction: 'das', name: 'DB-4 "Nebula Wyrm"', role: 'Strategic Bomber' },
+            { path: 'ships/das/DASTorpedo.png', type: 'ship', faction: 'das', name: 'DB-2 "Spitter"', role: 'Torpedo Bomber' },
+            { path: 'ships/das/DASHeavy.png', type: 'ship', faction: 'das', name: 'DF-7 "Basilisk"', role: 'Heavy Fighter' },
+            { path: 'ships/das/DASFighter.png', type: 'ship', faction: 'das', name: 'DF-5 "Cobra"', role: 'Multi-role Fighter' },
+            { path: 'ships/das/DASInterceptor.png', type: 'ship', faction: 'das', name: 'DF-3 "Shard"', role: 'Interceptor' },
+            { path: 'ships/das/DASBattlecruiser.png', type: 'ship', faction: 'das', name: 'BC-1 "Wyrm\'s Tooth"', role: 'Battlecruiser' },
+            { path: 'ships/das/DASCarrier.png', type: 'ship', faction: 'das', name: 'CV-1 "Star-Eater\'s Maw"', role: 'Carrier' },
+            { path: 'ships/das/DASDreadnought.png', type: 'ship', faction: 'das', name: 'LV-1 "Void-Singer"', role: 'Dreadnought' },
+            
+            // Lurkers Ships
+            { path: 'ships/lurkers/LurkersFighter.png', type: 'ship', faction: 'lurkers', name: 'Lurkers Fighter', role: 'Phase-Capable Strike Craft' },
+            { path: 'ships/lurkers/LurkersCapital.png', type: 'ship', faction: 'lurkers', name: 'Lurkers Capital', role: 'Reality-Warping Flagship' },
+            
+            // Ouroborus Ships
+            { path: 'ships/ouroborus/OuroborusFighter.png', type: 'ship', faction: 'ouroborus', name: 'Ouroborus Fighter', role: 'Regenerative Strike Craft' },
+            { path: 'ships/ouroborus/OuroborusCapital.png', type: 'ship', faction: 'ouroborus', name: 'Ouroborus Capital', role: 'Bio-Regenerative Command Ship' },
+            
+            // Synapse Ships
+            { path: 'ships/synapse/SynapseFighter.png', type: 'ship', faction: 'synapse', name: 'Synapse Fighter', role: 'AI-Controlled Interceptor' },
+            { path: 'ships/synapse/SynapseCapital.png', type: 'ship', faction: 'synapse', name: 'Synapse Capital', role: 'Hive-Mind Command Vessel' }
+        ];
+
+        let currentView = 'grid';
+        let currentType = 'all';
+        let currentFaction = 'all';
+        let filteredImages = [...images];
+
+        // Initialize gallery
+        function initGallery() {
+            renderGallery(images);
+            setupEventListeners();
+        }
+
+        // Filter images based on current filters
+        function filterImages() {
+            filteredImages = images.filter(image => {
+                const typeMatch = currentType === 'all' || image.type === currentType || (currentType === 'characters' && image.type === 'character') || (currentType === 'ships' && image.type === 'ship');
+                const factionMatch = currentFaction === 'all' || image.faction === currentFaction;
+                const searchMatch = document.getElementById('searchBox').value.toLowerCase() === '' || 
+                    image.name.toLowerCase().includes(document.getElementById('searchBox').value.toLowerCase());
+                return typeMatch && factionMatch && searchMatch;
+            });
+            renderGallery(filteredImages);
+        }
+
+        // Render gallery images
+        function renderGallery(imagesToRender) {
+            const grid = document.getElementById('imageGrid');
+            const noResults = document.getElementById('noResults');
+            
+            if (imagesToRender.length === 0) {
+                grid.style.display = 'none';
+                noResults.style.display = 'block';
+                return;
+            }
+            
+            grid.style.display = 'grid';
+            noResults.style.display = 'none';
+            
+            grid.innerHTML = imagesToRender.map(image => {
+                const imagePath = `assets/images/${image.path}`;
+                const fullUrl = `${window.location.origin}/${imagePath}`;
+                const displayName = image.name;
+                const typeLabel = image.type.charAt(0).toUpperCase() + image.type.slice(1);
+                const factionLabel = image.faction.charAt(0).toUpperCase() + image.faction.slice(1);
+                const shipStatsHTML = image.type === 'ship' ? generateShipStats(image.name) : '';
+                
+                return `
+                    <div class="image-item" data-name="${image.name.toLowerCase()}" data-type="${image.type}" data-faction="${image.faction}">
+                        <div class="image-container">
+                            <img src="${imagePath}" alt="${displayName}" class="gallery-image" data-full="${fullUrl}">
+                        </div>
+                        <div class="image-info">
+                            <div class="image-name">
+                                ${displayName}
+                                ${image.role ? `<span class="ship-role">${image.role}</span>` : ''}
+                            </div>
+                            <div class="image-meta">
+                                <span class="image-type">${typeLabel}</span>
+                                ${image.faction !== 'none' ? `<span class="image-faction">${factionLabel}</span>` : ''}
+                            </div>
+                            ${shipStatsHTML}
+                            <div class="image-path">${fullUrl}</div>
+                            <button class="copy-btn" data-url="${fullUrl}">Copy URL</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            // Add click listeners to images
+            document.querySelectorAll('.gallery-image').forEach(img => {
+                img.addEventListener('click', function() {
+                    openModal(this.src, this.alt);
+                });
+            });
+            
+            // Add click listeners to copy buttons
+            document.querySelectorAll('.copy-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    copyToClipboard(this.dataset.url, this);
+                });
+            });
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Search functionality
+            document.getElementById('searchBox').addEventListener('input', function() {
+                filterImages();
+            });
+
+            // Type filter toggle
+            document.querySelectorAll('[data-filter="type"]').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('[data-filter="type"]').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    currentType = this.dataset.type;
+                    filterImages();
+                });
+            });
+
+            // Faction filter toggle
+            document.querySelectorAll('[data-filter="faction"]').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('[data-filter="faction"]').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    currentFaction = this.dataset.faction;
+                    filterImages();
+                });
+            });
+
+            // View toggle
+            document.querySelectorAll('[data-view]').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('[data-view]').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    currentView = this.dataset.view;
+                    const grid = document.getElementById('imageGrid');
+                    
+                    if (currentView === 'list') {
+                        grid.classList.add('list-view');
+                    } else {
+                        grid.classList.remove('list-view');
+                    }
+                });
+            });
+
+            // Modal close
+            document.querySelector('.close').addEventListener('click', closeModal);
+            document.getElementById('imageModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeModal();
+                }
+            });
+
+            // Mobile navigation
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+        }
+
+        // Copy to clipboard functionality
+        function copyToClipboard(text, button) {
+            navigator.clipboard.writeText(text).then(() => {
+                button.textContent = 'Copied!';
+                button.classList.add('copied');
+                
+                setTimeout(() => {
+                    button.textContent = 'Copy URL';
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                
+                button.textContent = 'Copied!';
+                button.classList.add('copied');
+                
+                setTimeout(() => {
+                    button.textContent = 'Copy URL';
+                    button.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        // Modal functions
+        function openModal(src, alt) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const caption = document.getElementById('modalCaption');
+            
+            modal.style.display = 'block';
+            modalImg.src = src;
+            caption.textContent = alt;
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initGallery);
+    </script>
+</body>
+</html>

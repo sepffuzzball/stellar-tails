@@ -1,0 +1,167 @@
+NEXUS PACT FLEET ROSTER
+The Nexus Pact builds their ships like swift predators and with advanced computer systems with sentient AIs, powerful targeting aids, and highly-precise weapons systems. They tend to prefer speed, agility, and accuracy over armor and firepower though their weapons still pack quite the punch.
+
+CAPITAL SHIPS
+Dreadnought (NPS-DR)
+Size: 3km
+Crew: 3,500
+Armament: 6x spinal cannons, 200 missile tubes
+Fighter Bay: 2 squadrons (24 fighters)
+Role: Fleet anchor, siegebreaker
+Example Ships: Vulpine Star, Howling Moon, Jackal's Gambit
+
+Carrier (NPS-CV)
+Size: 2.5km
+Crew: 2,800
+Armament: Point-defense only
+Fighter Bay: 12 squadrons (144 fighters)
+Role: Force projection, command
+Example Ships: Quickfoot, Soaring Talon, Pride's Roar
+
+Battlecruiser (NPS-BC)
+Size: 1.8km
+Crew: 1,200
+Armament: 3x spinal cannons, heavy torpedoes
+Role: Fast response, raiding
+Example Ships: Red Tail, Night Stalker
+
+FIGHTER CLASSES
+XF-7 "Viper" (Interceptor)
+Crew: 1 pilot (canid/feline optimized)
+Armament: 2x plasma cannons, 4x short-range missiles
+Speed: 950 km/s
+Role: Dogfighting, escort
+Features: Minimal armor, max acceleration
+
+XF-9 "Claw" (Multi-role)
+Crew: 1 pilot
+Armament: 1x railgun, 2x missile pods
+Speed: 700 km/s
+Role: Strike, recon
+Features: Balanced, adaptive avionics
+
+XF-11 "Thunder" (Heavy Fighter)
+Crew: 1 pilot + 1 gunner
+Armament: 2x heavy cannons, torpedo hardpoint
+Speed: 550 km/s
+Role: Anti-ship, bomber escort
+
+BOMBER CLASSES
+TB-4 "Digger" (Torpedo Bomber)
+Crew: 2 (pilot, bombardier)
+Armament: 2x anti-ship torpedoes, tail gun
+Speed: 400 km/s
+Role: Capital ship killer
+
+SB-1 "Skyhammer" (Strategic Bomber)
+Crew: 4
+Armament: Flux-denial bombs, cluster munitions
+Speed: 300 km/s
+Role: Area denial, base busting
+
+DROPSHIP CLASSES
+AD-5 "Cliffjumper" (Assault)
+Crew: 2 pilots + 20 troops
+Armament: Door guns, rocket pods
+Role: Hot insertions, fire support
+Features: Armored belly, inertial dampeners
+
+TD-7 "Spirit" (Stealth)
+Crew: 2 pilots + 8 spec-ops
+Armament: Silent running, cloaking
+Role: Covert ops, extraction
+
+TITAN CONCORD FLEET ROSTER
+The Titan Concord builds its ships like they build their cities: to last forever and withstand any assault. Their vessels are flying fortresses, prioritizing overwhelming firepower and near-impenetrable armor over speed and agility.
+
+CAPITAL SHIPS
+Dreadnought - TCS "Iron Hoof" (Bastion-class)
+Class: TCS-BS (Bastion)
+Description: A terrifying 4-kilometer-long rectangular slab of bronze and green armor plating. The Iron Hoof has no sleek lines; it is a mobile weapon platform. Its primary armament consists of two dozen triple-barreled heavy cannon batteries running along its broadsides, capable of unleashing a devastating wall of metal. Its bridge is a heavily armored citadel deep within the superstructure, with sensor arrays and viewports protected by layered shutters.
+Role: Fleet Anchor, Planetary Siege.
+Unique Feature: Anvil Protocol. The ship can reroute all power to its forward shields for 60 seconds, creating a near-impenetrable wall that can ram through enemy formations or withstand a full barrage. However, this disables all weapons and leaves the ship vulnerable from the rear.
+
+Carrier - TCS "The Grazelands" (Pasture-class)
+Class: TCS-CV (Carrier)
+Description: A bulky, 3km-wide vessel shaped more like a flying island than a ship. Its top is a flat, armored "flight deck" where fighters launch and land via powerful magnetic catapults and tractor beams. It has no traditional hangar bays; instead, fighters are stored in armored racks along the hull's interior walls and moved into position by heavy lifters. It looks like a chunk of a planet with engines bolted on.
+Role: Force Projection, Mobile Airfield.
+Unique Feature: Overwhelming Deployment. Can launch its entire complement of 200 fighters in under 90 seconds, swarming an enemy with sheer numbers before they can adequately react.
+
+Battlecruiser - TCS "Aurochs's Fury" (Herd-class)
+Class: TCS-BC (Battlecruiser)
+Description: A 2km-long, wedge-shaped vessel designed for one purpose: breaking lines. Its bow is a heavily reinforced ramming prow packed with explosive charges. It's slower than other battlecruisers but can take immense punishment and keep moving. Its main guns are fixed-forward, designed to fire while charging.
+Role: Line Breaker, Assault Vessel.
+Unique Feature: Stampede Charge. A combat maneuver where the ship overloads its engines for a short burst of speed, turning the vessel into a kinetic projectile capable of shattering smaller ships or breaching capital ship hulls on impact.
+
+FIGHTERS & BOMBERS
+Interceptor - TI-8 "Hornet"
+Description: A bulky, boxy fighter that looks like a flying engine with guns. It's not agile, but it's absurdly fast in a straight line and packed with forward-facing kinetic cannons. Its design philosophy is to intercept targets quickly and destroy them with a single, overwhelming pass.
+Armament: 4x rotary kinetic cannons, 2x forward-firing rockets.
+Role: High-Speed Interception, Boom-and-Zoom.
+
+Multi-Role - TI-9 "Workhorse"
+Description: The epitome of Concord design: functional, durable, and adaptable. It's a heavy fighter with thick armor and multiple weapon hardpoints. It's not the best at any one role, but it can perform them all adequately. It's the most common sight in Concord fleets.
+Armament: 2x plasma cannons, 4x configurable hardpoints (missiles, bombs, electronic warfare pods).
+Role: Patrol, Escort, Light Strike.
+
+Heavy Fighter - TI-11 "Bulwark"
+Description: A twin-cockpit, heavily armored beast. The Bulwark is essentially a flying tank, designed to escort bombers and absorb damage. Its rear cockpit is dedicated to a weapons officer who controls a remote turret system. It's slow but incredibly tough.
+Armament: 2x heavy plasma cannons, remote-controlled dorsal/ventral turrets.
+Role: Bomber Escort, Gunship.
+
+Torpedo Bomber - TB-9 "Battering Ram"
+Description: A massive, slow-moving brick designed to deliver a single, powerful payload. It has no defensive guns, relying entirely on its thick armor and accompanying fighter escorts to reach its target. It carries one or two massive, armor-piercing torpedoes.
+Armament: 1-2x "Shipbreaker" Torpedoes.
+Role: Anti-Capital Ship Assault.
+
+Strategic Bomber - SB-5 "Earthshaker"
+Description: A colossal, multi-crew bomber that looks like a flying cathedral. It carries a payload of bunker-buster and seismic charges designed for planetary bombardment. It is so large and slow it can only operate in uncontested airspace.
+Armament: Internal bay with 20x "Groundbreaker" bombs.
+Role: Planetary Siege, Terror Bombing.
+
+DRACO ASCENDANCY FLEET ROSTER
+Draco Ascendancy vessels are works of malevolent art, blending biological engineering with crystalline technology. They appear alive, with hulls of interlocking scales and sinuous, organic curves. Their ships are often silent, appearing and disappearing like ghosts.
+
+CAPITAL SHIPS
+Dreadnought - DAS "Void-Singer" (Leviathan-class)
+Class: DAS-LV (Leviathan)
+Description: A 3.5km-long ship that resembles a coiled, bio-luminescent sea serpent made of obsidian and jade. Its hull is segmented, allowing it to twist and turn in ways that seem impossible for a vessel of its size. It has no visible windows or bridges, instead being controlled from a central psychic nexus. Instead of cannons, it has "crystal lattices" along its spine that fire beams of coherent energy.
+Role: Command & Control, Psychological Warfare.
+Unique Feature: Psychic Scream. The ship can focus its psychic energy into a single, devastating blast that bypasses conventional shields to cripple enemy ship systems and induce terror and disorientation in organic crews.
+
+Carrier - DAS "Star-Eater's Maw" (Nest-class)
+Class: DAS-CV (Carrier)
+Description: A 2km-wide vessel that looks less like a ship and more like a colossal, floating flower bud. When deploying fighters, its "petals" (armored hull plates) peel open to reveal a shimmering energy field. Fighters don't launch; they phase directly from the internal bio-pods into space.
+Role: Stealth Carrier, Ambush Platform.
+Unique Feature: Cloaked Deployment. The carrier and its small fighter wing can remain cloaked while launching, allowing them to appear undetected and strike before the enemy even knows they are there.
+
+Battlecruiser - DAS "Wyrm's Tooth" (Serpent-class)
+Description: A long, slender, 1.5km vessel shaped like a fang or a blade. Its hull is a single, unbroken piece of black crystalline material that refracts light oddly, making it difficult to target. It moves with an eerie, silent grace. Its weapons are forward-facing "spite lances" that fire overcharged, armor-melting energy beams.
+Role: Assassination, Precision Strike.
+Unique Feature: Phase Cloak. Can temporarily become intangible, allowing it to pass through solid objects or enemy ships to attack their vulnerable rear arcs. This has a long cooldown and puts immense strain on the bio-core.
+
+FIGHTERS & BOMBERS
+Interceptor - DF-3 "Shard"
+Description: A small, tri-winged fighter that looks like a thrown dart. It has no cockpit; the pilot is neurally linked from a crèche-pod within the ship. It is the fastest and most agile fighter in known space, capable of maneuvers that would kill a pilot in a conventional cockpit.
+Armament: 2x "Crystal Shard" projectors (fire high-velocity splinters of crystal).
+Role: Dogfighting, Reconnaissance.
+
+Multi-Role - DF-5 "Cobra"
+Description: A versatile fighter with a hood-like cowl that can flare open to reveal additional sensor arrays or missile hardpoints. Its design is a perfect balance of speed and firepower. It's the most common Draco fighter, often crewed by a kobold pilot and a draconic weapon officer.
+Armament: 1x "Venom" energy projector, 4x underwing hardpoints.
+Role: Space Superiority, Ground Attack.
+
+Heavy Fighter - DF-7 "Basilisk"
+Description: A heavy, twin-hulled fighter that looks like a predatory reptile. Its primary weapon is a "Gaze" cannon that fires a slow-moving but devastating continuous beam. It's a "gaze of death" that can melt through capital ship armor given time. It requires a second crew member to manage the weapon's power flow.
+Armament: 1x "Gaze" beam cannon, 2x defensive crystal projectors.
+Role: Heavy Assault, Anti-Ship.
+
+Torpedo Bomber - DB-2 "Spitter"
+Description: A biological-looking craft that "spits" its payload. It carries two bio-engineered, self-propelled torpedoes that burrow into hulls before detonating. The bomber itself is lightly armored and relies on its small size and speed to survive.
+Armament: 2x "Worm" Torpedoes.
+Role: Anti-Capital Ship, Stealth Attack.
+
+Strategic Bomber - DB-4 "Nebula Wyrm"
+Description: A large, slow-moving craft that looks like a cross between a manta ray and a serpent. It doesn't drop bombs; it releases a cloud of corrosive, nanite-infused spores that eat away at everything on a planet's surface—organic and inorganic. It is a weapon of terror and extermination.
+Armament: "Spore Cloud" dispersal system.
+Role: Planetary Scouring, Exterminatus.
